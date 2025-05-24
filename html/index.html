@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projeto de sustentabilidade e análise emergética no campus UNIP Paraíso">
+    <meta name="keywords" content="energia, sustentabilidade, UNIP, emergia, campus">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/main.js" defer></script>
+    <title>APS UNIP 2025</title>
+</head>
+<body>
+  <header>
+    <h1>Emergia e Sustentabilidade no Campus UNIP Paraíso</h1>
+  </header>
+
+  <nav>
+    <a href="#introducao"><i class="fas fa-info-circle"></i> Introdução</a>
+    <a href="#aplicacao"><i class="fas fa-university"></i> Aplicação</a>
+    <a href="#exemplos"><i class="fas fa-chart-bar"></i> Exemplos</a>
+    <a href="#solucoes"><i class="fas fa-lightbulb"></i> Soluções</a>
+    <a href="#dicas"><i class="fas fa-leaf"></i> Dicas</a>
+  </nav>
+
+  <main>
+    <section id="introducao">
+      <h2>Introdução ao Conceito de Emergia</h2>
+      <p>Emergia é uma medida que considera toda a energia direta e indireta usada para gerar um produto ou serviço. Ela permite entender o valor real dos recursos naturais em termos de energia solar equivalente (seJ).</p>
+      <p>Esse conceito foi desenvolvido por H.T. Odum e é usado para avaliar a sustentabilidade de sistemas naturais e humanos. Di Salvo aplicou essa metodologia para estudar sistemas complexos e sua eficiência energética.</p>
+      <p>Os principais princípios da emergia incluem:</p>
+      <ul>
+        <li>Todos os recursos podem ser quantificados em termos de energia solar usada para sua produção;</li>
+        <li>Quanto maior a emergia, maior o esforço ecológico necessário para gerar um bem ou serviço;</li>
+        <li>É uma ferramenta útil para comparar sistemas e sugerir melhorias sustentáveis.</li>
+      </ul>
+    </section>
+
+    <section id="aplicacao">
+      <h2>Aplicação no Campus UNIP Paraíso</h2>
+      <p>A metodologia emergética pode ser usada para entender como o campus consome energia, água e outros recursos. Através dessa análise, é possível:</p>
+      <ul>
+        <li>Identificar áreas de desperdício de energia;</li>
+        <li>Otimizar o uso de recursos naturais e financeiros;</li>
+        <li>Reduzir a pegada ecológica da universidade.</li>
+      </ul>
+      <p>Por exemplo, a análise emergética dos sistemas de iluminação, ar-condicionado e abastecimento de água pode indicar onde investir em soluções mais eficientes, como painéis solares e reutilização de água da chuva.</p>
+    </section>
+
+    <section id="exemplos">
+      <h2>Exemplos Visuais e Interativos</h2>
+      <p>Diagramas emergéticos mostram como a energia flui em um sistema, ajudando a visualizar entradas (como sol, combustíveis, materiais) e saídas (como produtos e resíduos).</p>
+      
+      <img src="/images/Emergy-System.png" alt="Diagrama Emergético" class="diagram">
+
+    <div class="form-container">
+    <div class="form-group">
+        <label for="energia"><i class="fas fa-bolt"></i> Energia utilizada (kWh)</label>
+        <input 
+        type="number" 
+        id="energia" 
+        class="form-control"
+        placeholder="Ex: 1000"
+        min="0"
+        step="0.01"
+        >
+        <span class="error-message" id="energia-error"></span>
+    </div>
+    
+    <button id="calcularEmergiaBtn" class="calc-btn">
+        <i class="fas fa-calculator"></i> Calcular Emergia
+    </button>
+    
+    <div id="resultado" class="result-container" style="display: none;">
+        <!-- Resultado será inserido aqui via JavaScript -->
+    </div>
+    </div>
+      <canvas id="graficoEmergia"></canvas>
+
+    <div class="form-container">
+    <h3><i class="fas fa-chart-line"></i> Simulador de Impacto</h3>
+    
+    <div class="form-group">
+        <label for="area"><i class="fas fa-ruler-combined"></i> Área do campus (m²)</label>
+        <input 
+        type="number" 
+        id="area" 
+        class="form-control"
+        placeholder="Ex: 1000"
+        min="1"
+        step="0.01"
+        >
+        <span class="error-message" id="area-error"></span>
+    </div>
+    
+    <div class="form-group">
+        <label for="consumo"><i class="fas fa-bolt"></i> Consumo mensal (kWh)</label>
+        <input 
+        type="number" 
+        id="consumo" 
+        class="form-control"
+        placeholder="Ex: 5000"
+        min="0"
+        step="0.01"
+        >
+        <span class="error-message" id="consumo-error"></span>
+    </div>
+    
+    <button id="calcularImpactoBtn" class="calc-btn">
+        <i class="fas fa-calculator"></i> Calcular Impacto
+    </button>
+    
+    <div id="resultado-impacto" class="result-container" style="display: none;">
+        <!-- Resultado será inserido aqui via JavaScript -->
+    </div>
+    </div>
+    </section>
+
+    <section id="solucoes">
+    <h2>Soluções Práticas para Sustentabilidade</h2>
+    
+    <div class="solucao-accordion">
+        <button class="accordion-btn">
+        <i class="fas fa-lightbulb"></i> Eficiência energética
+        <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+        <p>Substituir lâmpadas comuns por LED, instalar sensores de presença e investir em energia solar fotovoltaica.</p>
+        <div class="grafico-comparativo">
+            <canvas id="graficoEnergia"></canvas>
+        </div>
+        </div>
+    </div>
+
+    <div class="solucao-accordion">
+        <button class="accordion-btn">
+        <i class="fas fa-tint"></i> Gestão da água
+        <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+        <p>Instalar sistemas de captação de água da chuva e reaproveitamento para limpeza e irrigação.</p>
+        <div class="grafico-comparativo">
+            <canvas id="graficoAgua"></canvas>
+        </div>
+        </div>
+    </div>
+
+    <div class="solucao-accordion">
+        <button class="accordion-btn">
+        <i class="fas fa-trash-alt"></i> Resíduos
+        <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+        <p>Ampliar a coleta seletiva, implementar compostagem de resíduos orgânicos e promover campanhas educativas.</p>
+        <div class="grafico-comparativo">
+            <canvas id="graficoResiduos"></canvas>
+        </div>
+        </div>
+    </div>
+
+    <div class="solucao-accordion">
+        <button class="accordion-btn">
+        <i class="fas fa-graduation-cap"></i> Educação ambiental
+        <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="accordion-content">
+        <p>Incluir oficinas, palestras e atividades práticas sobre uso consciente de recursos.</p>
+        <div class="grafico-comparativo">
+            <canvas id="graficoEducacao"></canvas>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="dicas" class="dicas-section">
+    <h2><i class="fas fa-lightbulb"></i> Dicas Práticas</h2>
+    <div class="dicas-grid">
+        <div class="dica-card">
+        <div class="dica-icon">
+            <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3>Iluminação</h3>
+        <p>Apague as luzes quando não estiver usando e aproveite a luz natural.</p>
+        </div>
+        
+        <div class="dica-card">
+        <div class="dica-icon">
+            <i class="fas fa-tint"></i>
+        </div>
+        <h3>Água</h3>
+        <p>Reporte vazamentos e feche torneiras enquanto ensaboa as mãos.</p>
+        </div>
+        
+        <div class="dica-card">
+        <div class="dica-icon">
+            <i class="fas fa-recycle"></i>
+        </div>
+        <h3>Resíduos</h3>
+        <p>Utilize as lixeiras de coleta seletiva disponíveis no campus.</p>
+        </div>
+    </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 UNIP Paraíso - Projeto de Sustentabilidade com Emergia</p>
+  </footer>
+</body>
+</html>

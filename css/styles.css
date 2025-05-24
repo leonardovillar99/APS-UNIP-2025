@@ -1,0 +1,465 @@
+/* Mantendo apenas as declarações únicas e otimizadas */
+
+html{
+    scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 5px; /* Ajuste conforme a altura do seu header */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f9f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+header, footer {
+    background-color: #00695c;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav {
+  background-color: #004d40;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* Efeito hover */
+nav a:hover {
+  background-color: #00332b;
+  transform: translateY(-2px);
+}
+
+/* Linha inferior animada */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #4db6ac;
+  transition: all 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 70%;
+  left: 15%;
+}
+
+/* Ícones do menu */
+nav a i {
+  font-size: 1rem;
+}
+
+/* Estilo para o item ativo (opcional) */
+nav a.active {
+  background-color: #00695c;
+  font-weight: 500;
+}
+
+section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.interactive {
+    background: #e0f2f1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+button {
+    background-color: #00695c;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s;
+}
+
+#graficoEmergia {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: none; /* Inicialmente escondido */
+  height: 400px; /* Altura fixa quando visível */
+}
+
+#graficoEmergia.mostrar {
+  display: block;
+  margin: 2rem auto;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.grafico-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.grafico-container.mostrar {
+  max-height: 500px; /* Altura máxima suficiente para o gráfico */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Estilos para os inputs e formulários */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #00695c;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  border: 2px solid #b2dfdb;
+  border-radius: 8px;
+  background-color: #f5fbfa;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #00796b;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.1);
+}
+
+.form-control::placeholder {
+  color: #90a4ae;
+  opacity: 1;
+}
+
+/* Estilo para botões de cálculo */
+.calc-btn {
+  background-color: #00796b;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.calc-btn:hover {
+  background-color: #00695c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.calc-btn:active {
+  transform: translateY(0);
+}
+
+.calc-btn i {
+  font-size: 0.9rem;
+}
+
+/* Container para grupos de formulário */
+.form-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+/* Estilos para a exibição dos resultados */
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.result-item {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.8rem;
+  border-radius: 6px;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.result-label {
+  font-weight: 600;
+  color: #00796b;
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.result-value {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Cores para classificação */
+.excelente {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.bom {
+  color: #689f38;
+  font-weight: 600;
+}
+
+.pode-melhorar {
+  color: #ef6c00;
+  font-weight: 600;
+}
+
+/* Estilo para mensagens de resultado */
+.result-container {
+  background: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+  margin-top: 1.5rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilo para inputs com erro */
+.form-control.error {
+  border-color: #e53935;
+  background-color: #ffebee;
+}
+
+.error-message {
+  color: #e53935;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* Estilos para a seção de soluções */
+#solucoes h2{
+    text-align: center;
+}
+
+.solucao-item {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.solucao-item h3 {
+  color: #00695c;
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.solucao-item h3 i {
+  font-size: 1.2em;
+}
+
+.grafico-comparativo {
+  margin-top: 1.5rem;
+  height: 300px;
+}
+
+/* Estilos para o accordion */
+.solucao-accordion {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.accordion-btn {
+  width: 100%;
+  padding: 1.2rem;
+  text-align: left;
+  background-color: #00695c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s;
+}
+
+.accordion-btn:hover {
+  background-color: #004d40;
+}
+
+.accordion-btn i:first-child {
+  margin-right: 10px;
+}
+
+.accordion-btn i:last-child {
+  transition: transform 0.3s;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background: white;
+  transition: max-height 0.3s ease-out;
+  padding: 0 1.5rem;
+}
+
+.accordion-content p {
+  padding-top: 1rem;
+}
+
+.grafico-comparativo {
+  margin: 1.5rem 0;
+  height: 300px;
+}
+
+/* Classe ativa quando expandido */
+.accordion-active .accordion-btn {
+  background-color: #004d40;
+}
+
+.accordion-active .accordion-btn i:last-child {
+  transform: rotate(180deg);
+}
+
+.accordion-active .accordion-content {
+  max-height: 600px; /* Ajuste conforme necessário */
+}
+
+/* Seção de Dicas */
+.dicas-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.dicas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.dica-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.dica-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dica-icon {
+  background-color: #e0f2f1;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.dica-icon i {
+  font-size: 1.8rem;
+  color: #00796b;
+}
+
+.dica-card h3 {
+  color: #00695c;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.dica-card p {
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .dicas-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  
+  .dica-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grafico-comparativo {
+    height: 250px;
+  }
+}
