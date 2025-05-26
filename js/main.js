@@ -365,3 +365,95 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Botão flutuante "Voltar ao Topo"
+document.addEventListener('DOMContentLoaded', function() {
+  const btnTopo = document.getElementById('btnTopo');
+  
+  // Mostrar/ocultar botão ao rolar
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      btnTopo.classList.add('visible');
+    } else {
+      btnTopo.classList.remove('visible');
+    }
+  });
+  
+  // Rolagem suave ao clicar
+  btnTopo.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Adiciona efeito de clique
+    this.classList.add('clicked');
+    setTimeout(() => this.classList.remove('clicked'), 300);
+  });
+  
+  // Se já estiver no topo, esconde o botão
+  if (window.scrollY <= 300) {
+    btnTopo.classList.remove('visible');
+  }
+});
+
+// Função para abrir o modal
+function openEcoModal(cardElement) {
+  const modal = document.getElementById('ecoModal');
+  const modalImg = document.getElementById('ecoModalImage');
+  const modalTitle = document.getElementById('ecoModalTitle');
+  const modalDesc = document.getElementById('ecoModalDesc');
+  
+  // Obtém os elementos da card clicada
+  const imgSrc = cardElement.querySelector('img').src;
+  const title = cardElement.querySelector('h3').textContent;
+  const description = cardElement.querySelector('p').textContent;
+  
+  // Atualiza o modal com os dados
+  modalImg.src = imgSrc;
+  modalTitle.textContent = title;
+  modalDesc.textContent = description;
+  
+  // Exibe o modal
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden'; // Desabilita scroll da página
+  
+  console.log('Modal aberto com:', imgSrc); // Para debug
+}
+
+// Função para fechar o modal
+function closeEcoModal() {
+  document.getElementById('ecoModal').style.display = 'none';
+  document.body.style.overflow = 'auto'; // Reabilita scroll
+}
+
+// Fechar modal ao clicar no X, fora da imagem ou pressionar ESC
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('ecoModal');
+  
+  // Fechar ao clicar no X
+  document.querySelector('.eco-close').addEventListener('click', closeEcoModal);
+  
+  // Fechar ao clicar fora do conteúdo
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeEcoModal();
+    }
+  });
+  
+  // Fechar com ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
+      closeEcoModal();
+    }
+  });
+  
+  // Debug: Verifica se os botões estão funcionando
+  document.querySelectorAll('.eco-view-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation(); // Evita propagação do evento
+      const card = this.closest('.eco-card');
+      openEcoModal(card);
+    });
+  });
+});
