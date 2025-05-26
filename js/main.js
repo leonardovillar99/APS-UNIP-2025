@@ -457,3 +457,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Cards expansíveis
+document.addEventListener('DOMContentLoaded', function() {
+  const cards = document.querySelectorAll('.expansion-card');
+  
+  cards.forEach(card => {
+    const header = card.querySelector('.expansion-header');
+    
+    header.addEventListener('click', () => {
+      const isOpen = header.getAttribute('aria-expanded') === 'true';
+      
+      // Fecha todos os cards primeiro
+      cards.forEach(c => {
+        c.classList.remove('active');
+        c.querySelector('.expansion-header').setAttribute('aria-expanded', 'false');
+      });
+      
+      // Abre o card clicado se não estava aberto
+      if (!isOpen) {
+        card.classList.add('active');
+        header.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+});

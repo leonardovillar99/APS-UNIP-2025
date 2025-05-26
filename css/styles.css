@@ -15,7 +15,6 @@ body {
 h2{
   text-align: center;
   margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 header, footer {
@@ -578,65 +577,107 @@ button {
 }
 
 /* Seção de Dicas */
+/* Seção de Dicas */
 .dicas-section {
-  text-align: center;
-  padding: 2rem 0rem 10rem 0rem;
+  background: white;
+  width: 100%;
+  padding: 0.5rem 0 5rem;
 }
 
+/* Container principal */
+.dicas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5rem; /* Recuo nas laterais */
+}
+
+/* Grid de dicas */
 .dicas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, minmax(300px, 1fr)); /* Largura mínima de 300px */
   gap: 2rem;
-  margin-top: 1.5rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 1rem;
+  justify-content: center; /* Centraliza o grid */
 }
 
+/* Cards individuais */
 .dica-card {
   background: white;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  height: 100%;
+  box-shadow: 0 4px 12px rgba(0, 107, 92, 0.08);
+  border: 1px solid #e0f2f1;
+  transition: all 0.3s ease;
 }
 
+/* Efeito hover */
 .dica-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 107, 92, 0.15);
 }
 
+/* Ícones */
 .dica-icon {
-  background-color: #e0f2f1;
-  width: 60px;
-  height: 60px;
+  background: #e0f2f1;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  color: #00695c;
+  font-size: 1.2rem;
 }
 
-.dica-icon i {
-  font-size: 1.8rem;
-  color: #00796b;
-}
-
+/* Tipografia */
 .dica-card h3 {
   color: #00695c;
+  margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
-.dica-card p {
-  color: #333;
-  line-height: 1.6;
+.dica-card ul {
+  padding-left: 1.2rem;
+  margin: 0;
+  color: #455a64;
+}
+
+.dica-card li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  text-align: start;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .dicas-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .dica-card {
+    padding: 1.2rem;
+  }
+}
+@media (max-width: 1100px) {
+  .dicas-grid {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dicas-container {
+    padding: 0 1.5rem;
+  }
+  
+  .dicas-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* Botão flutuante */
@@ -686,6 +727,142 @@ button {
 
 .floating-btn:hover i {
   transform: translateY(-2px);
+}
+
+/* Seção Aplicação */
+.aplicacao-section {
+  padding-bottom: 5rem;
+  margin: 0 auto 3rem;
+}
+
+.section-intro {
+  text-align: center;
+  color: #00695c;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+/* Cards Expansíveis */
+.expansion-cards {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.expansion-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 107, 92, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.expansion-header {
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s ease;
+}
+
+.expansion-header:hover {
+  background: #f5fbfa;
+}
+
+.expansion-header h3 {
+  margin: 0;
+  color: #00695c;
+  font-size: 1.2rem;
+  flex-grow: 1;
+}
+
+.expansion-header i {
+  color: #4db6ac;
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.expansion-icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.expansion-icon::before,
+.expansion-icon::after {
+  content: '';
+  position: absolute;
+  background: #00695c;
+  transition: all 0.3s ease;
+}
+
+.expansion-icon::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.expansion-icon::after {
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.expansion-header[aria-expanded="true"] .expansion-icon::after {
+  transform: translateX(-50%) rotate(90deg);
+  opacity: 0;
+}
+
+.expansion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.expansion-card.active .expansion-content {
+  max-height: 1000px;
+}
+
+.card-content {
+  padding: 0 1.5rem 1.5rem;
+  gap: 2rem;
+}
+
+.card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .expansion-header {
+    padding: 1.2rem;
+  }
 }
 
 /* Responsividade */
